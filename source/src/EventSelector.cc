@@ -10,10 +10,10 @@ using namespace lcio ;
 using namespace marlin ;
 
 
-EventSelector aEventSelector ;
+MarlinEventSelector aMarlinEventSelector ;
 
 
-EventSelector::EventSelector() : Processor("EventSelector") {
+MarlinEventSelector::MarlinEventSelector() : Processor("EventSelector") {
   
   // modify processor description
   _description = "EventSelector returns true if given event was specified in EventList" ;
@@ -32,7 +32,7 @@ EventSelector::EventSelector() : Processor("EventSelector") {
 }
 
 
-void EventSelector::init() { 
+void MarlinEventSelector::init() {
   
   // usually a good idea to
   printParameters() ;
@@ -49,17 +49,17 @@ void EventSelector::init() {
   }
 }
 
-void EventSelector::processRunHeader( LCRunHeader* ) { 
+void MarlinEventSelector::processRunHeader( LCRunHeader* ) {
   
   _nRun++ ;
 } 
 
 
-void EventSelector::modifyEvent( LCEvent *evt ) {
+void MarlinEventSelector::modifyEvent( LCEvent *evt ) {
   processEvent( evt );
 }
 
-void EventSelector::processEvent( LCEvent * evt ) { 
+void MarlinEventSelector::processEvent( LCEvent * evt ) {
 
   // if no events specifiec - always return true
   if( _evtList.size() == 0 ) {
@@ -87,14 +87,14 @@ void EventSelector::processEvent( LCEvent * evt ) {
 
 
 
-void EventSelector::check( LCEvent *  ) { 
+void MarlinEventSelector::check( LCEvent *  ) { 
   // nothing to check here - could be used to fill checkplots in reconstruction processor
 }
 
 
-void EventSelector::end(){ 
+void MarlinEventSelector::end(){ 
   
-//   std::cout << "EventSelector::end()  " << name() 
+//   std::cout << "MarlinEventSelector::end()  " << name() 
 // 	    << " processed " << _nEvt << " events in " << _nRun << " runs "
 // 	    << std::endl ;
 

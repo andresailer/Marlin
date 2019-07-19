@@ -24,16 +24,16 @@ using namespace marlin ;
  * @version $Id:$ 
  */
 
-class EventSelector : public Processor, public marlin::EventModifier {
+class MarlinEventSelector : public Processor, public marlin::EventModifier {
   
   typedef std::set< std::pair< int, int > > SET ;
 
  public:
   
-  virtual Processor*  newProcessor() { return new EventSelector ; }
+  virtual Processor*  newProcessor() { return new MarlinEventSelector ; }
   
   
-  EventSelector() ;
+  MarlinEventSelector() ;
   
   /** Called at the begin of the job before anything is read.
    * Use to initialize the processor, e.g. book histograms.
